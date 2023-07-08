@@ -1,10 +1,19 @@
 using System.Text;
 using Api;
+using Api.Controllers.Public.Auth.Mapping;
+using Api.Controllers.Public.Categories.Mapping;
+using Api.Controllers.Public.Message.Mapping;
+using Api.Controllers.Public.Operation.Mapping;
+using Api.Managers.Messager;
+using Api.Managers.Messager.Interface;
+using AutoMapper;
 using Dal;
 using Dal.Categories.Repositories;
 using Dal.Categories.Repositories.Interface;
 using Dal.Email.Repositories;
 using Dal.Email.Repositories.Interface;
+using Dal.Message.Repositories;
+using Dal.Message.Repositories.Interface;
 using Dal.Operation.Repositories;
 using Dal.Operation.Repositories.Interface;
 using Dal.User.Entity;
@@ -86,6 +95,19 @@ builder.Services.AddScoped<ICategoriesManager, CategoriesManager>();
 //репозитории и менеджер Операций
 builder.Services.AddScoped<IOperationRepository, OperationRepository>();
 builder.Services.AddScoped<IOperationManager, OperationManager>();
+//репозитории и менеджер Сообщений
+builder.Services.AddScoped<IMessagerManager, MessagerManager>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+
+// Маппинг 
+builder.Services.AddAutoMapper(typeof(AccountMappingProfile));
+builder.Services.AddAutoMapper(typeof(MessageProfile));
+builder.Services.AddAutoMapper(typeof(CreateCategoriesProfile));
+builder.Services.AddAutoMapper(typeof(UpdateCategoryProfile));
+builder.Services.AddAutoMapper(typeof(CreateOperationProfile));
+builder.Services.AddAutoMapper(typeof(UpdateOperationProfile));
+builder.Services.AddAutoMapper(typeof(OperationResponseProfile));
+
 
 builder.Services.AddCors();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

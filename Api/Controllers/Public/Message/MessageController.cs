@@ -27,7 +27,8 @@ public class MessageController : BasePublicController
     [HttpPost("getMessages")]
     public async Task<IActionResult> CreateCategory()
     {
-        var list = await _messagerManager.GetAllAsync();
+        var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
+        var list = await _messagerManager.GetMessages(token);
         var result = list.Select(x => _mapper.Map<GetMessage>(x)).ToList();
         return Ok(new GetMessages(result));
     }
