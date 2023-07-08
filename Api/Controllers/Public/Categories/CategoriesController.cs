@@ -4,8 +4,10 @@ using System.Security.Claims;
 using Api.Controllers.Public.Base;
 using Api.Controllers.Public.Categories.Dto.Request;
 using Api.Controllers.Public.Categories.Dto.Response;
+using Api.Managers.Messager.Interface;
 using AutoMapper;
 using Dal.Categories.Entity;
+using Dal.Message.Entity;
 using Dal.User.Entity;
 using Logic.Managers.Categories.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,11 +22,13 @@ namespace Api.Controllers.Public.Categories;
 public class CategoriesController : BasePublicController
 {
     private readonly ICategoriesManager _categoriesManager; 
+    private readonly IMessagerManager _messagerManager;
     private readonly IMapper _mapper;
 
-    public CategoriesController(ICategoriesManager categoriesManager, IMapper mapper)
+    public CategoriesController(ICategoriesManager categoriesManager, IMessagerManager messagerManager, IMapper mapper)
     {
         _categoriesManager = categoriesManager;
+        _messagerManager = messagerManager;
         _mapper = mapper;
     }
 
@@ -36,6 +40,7 @@ public class CategoriesController : BasePublicController
         if (CheckNotValidAccess(token)) return StatusCode(403);
         var newCategory = _mapper.Map<CategoriesDal>(model);
         var sum = await _categoriesManager.CreateCategories(token, newCategory);
+        await _messagerManager.InsertAsync(new MessageDal($"Добавлена категория: {model.Name}"));
         return Ok(new CategoryResponse(newCategory.Name, newCategory.Id, newCategory.Type, sum, newCategory.Img));
     }
     
@@ -46,6 +51,7 @@ public class CategoriesController : BasePublicController
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         var newCategory = _mapper.Map<CategoriesDal>(model);
         await _categoriesManager.UpdateCategory(newCategory, token);
+        await _messagerManager.InsertAsync(new MessageDal($"Отредактирована категория: {model.Name}"));
         return Ok();
     }
     
@@ -54,7 +60,9 @@ public class CategoriesController : BasePublicController
     public async Task<IActionResult> DeleteCategory([FromRoute] Guid id)
     { 
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
+        var category = await _categoriesManager.GetAsync(id);
         await _categoriesManager.DeleteCategory(id, token);
+        await _messagerManager.InsertAsync(new MessageDal($"Удалена категория: {category.Name}"));
         return Ok();
     }
 

@@ -1,5 +1,6 @@
 ﻿using Dal.Categories.Entity;
 using Dal.Email.Entity;
+using Dal.Message.Entity;
 using Dal.Operation.Entity;
 using Dal.User.Entity;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,7 @@ public class DataContext : IdentityDbContext<UserDal>
     public DbSet<EmailDal> Email { get; set; }
     public DbSet<OperationDal> Operation { get; set; }
     public DbSet<CategoriesDal> Categories { get; set; }    
+    public DbSet<MessageDal> Message { get; set; }    
 
     public async Task<int> SaveChangesAsync()
     {
@@ -24,10 +26,7 @@ public class DataContext : IdentityDbContext<UserDal>
     {
         Database.EnsureCreated();
     }
-    
-    
-    
-    
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -45,11 +44,7 @@ public class DataContext : IdentityDbContext<UserDal>
             entity.ToTable("RoleClaims"));
 
         builder.ApplyConfiguration(new AuthConfiguration());
-        
         builder.Entity<EmailDal>().HasIndex(u => u.Email).IsUnique();
-        /*builder.Entity<UserDal>().HasMany<CategoriesDal>().WithOne(x => x.UserDal).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<UserDal>().HasMany<OperationDal>().WithOne(x => x.UserDal).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<CategoriesDal>().HasMany<OperationDal>().WithOne(x => x.CategoriesDal).OnDelete(DeleteBehavior.Cascade);*/
         builder.Entity<UserDal>().Property(u => u.Balance).IsRequired(false);
         builder.Entity<CategoriesDal>().Property(u => u.Name).IsRequired(false);
         builder.Entity<OperationDal>().Property(u => u.DateTime);

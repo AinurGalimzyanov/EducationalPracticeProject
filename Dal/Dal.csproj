@@ -36,10 +36,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\ImgInProfile\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\1.svg" />
       <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\10.svg" />
       <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\11.svg" />
@@ -351,6 +347,10 @@
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\ImgInProfile\" />
     </ItemGroup>
 
 </Project>
