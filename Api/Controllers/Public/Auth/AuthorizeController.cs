@@ -144,6 +144,17 @@ public class AuthorizeController : BasePublicController
         return Ok();
     }
 
+    [HttpPatch("recoverPassword")]
+    public async Task<IActionResult> RecoverPassword([FromBody] RecoverPasswordModelRequest model)
+    {
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        var newPassword = Guid.NewGuid().ToString();
+        await _userManager.RemovePasswordAsync(user);
+        await _userManager.AddPasswordAsync(user, newPassword);
+        EmailSender.SendEmail($"Новый пароль : {newPassword}", $"{model.Email}");
+        return Ok();
+    }
+    
     [HttpPatch("refreshAccessToken")]
     public async Task<IActionResult> RefreshToken()
     {
