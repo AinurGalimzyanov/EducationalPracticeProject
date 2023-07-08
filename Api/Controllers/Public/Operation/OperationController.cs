@@ -15,20 +15,20 @@ namespace Api.Controllers.Public.Operation;
 public class OperationController : BasePublicController
 {
     private readonly IOperationManager _operationManager;
+    private readonly IMapper _mapper;
 
-    public OperationController(IOperationManager operationManager)
+    public OperationController(IOperationManager operationManager, IMapper mapper)
     {
         _operationManager = operationManager;
+        _mapper = mapper;
     }
-    
+
     [HttpPost("create")]
     public async Task<IActionResult> CreateOperation([FromBody] CreateOperationModelRequest model)
     {
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         if (CheckNotValidAccess(token)) return StatusCode(403);
-        var operation = new OperationDal();
-        operation.Price = model.Price;
-        operation.DateTime = model.DateTime;
+        var operation = _mapper.Map<OperationDal>(model);
         await _operationManager.CreateOperation(token,  operation, model.CategoryId);
         var categoryName = await _operationManager.GetNameCategory(operation.Id);
         return Ok(new OperationResponse(operation.Id, operation.Price, operation.DateTime, categoryName));
@@ -39,10 +39,7 @@ public class OperationController : BasePublicController
     {
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         if (CheckNotValidAccess(token)) return StatusCode(403);
-        var operation = new OperationDal();
-        operation.Price = model.Price;
-        operation.DateTime = model.DateTime;
-        operation.Id = model.Id;
+        var operation = _mapper.Map<OperationDal>(model);
         await _operationManager.UpdateOperation(token, operation, model.OldPrice);
         var categoryName = await _operationManager.GetNameCategory(operation.Id);
         return Ok(new OperationResponse(operation.Id, operation.Price, operation.DateTime, categoryName));

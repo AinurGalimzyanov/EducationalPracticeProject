@@ -24,6 +24,7 @@ public class AuthorizeController : BasePublicController
     private readonly UserManager<UserDal> _userManager;
     private readonly ICategoriesManager _categoriesManager;
     private readonly JWTSettings _options;
+    private readonly IMapper _mapper;
 
     public AuthorizeController(UserManager<UserDal> userManager, 
         SignInManager<UserDal> signInManager, 
@@ -36,14 +37,13 @@ public class AuthorizeController : BasePublicController
         _signInManager = signInManager;
         _options = options.Value;
         _categoriesManager = categoriesManager;
+        _mapper = mapper;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterModelRequest model)
     {
-        var user = new UserDal();
-        user.Name = model.Name;
-        user.Email = model.Email;
+        var user = _mapper.Map<UserDal>(model);
         var result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {
@@ -119,7 +119,6 @@ public class AuthorizeController : BasePublicController
         return Unauthorized();
     }
 
-    //dfsf
     [HttpPost("signinWithAccess")]
     public async Task<IActionResult> SignInWithAccess()
     {

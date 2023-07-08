@@ -20,10 +20,12 @@ namespace Api.Controllers.Public.Categories;
 public class CategoriesController : BasePublicController
 {
     private readonly ICategoriesManager _categoriesManager; 
+    private readonly IMapper _mapper;
 
-    public CategoriesController(ICategoriesManager categoriesManager)
+    public CategoriesController(ICategoriesManager categoriesManager, IMapper mapper)
     {
         _categoriesManager = categoriesManager;
+        _mapper = mapper;
     }
 
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -32,10 +34,7 @@ public class CategoriesController : BasePublicController
     {
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         if (CheckNotValidAccess(token)) return StatusCode(403);
-        var newCategory = new CategoriesDal();
-        newCategory.Name = model.Name;
-        newCategory.Type = model.Type;
-        newCategory.Img = model.Img;
+        var newCategory = _mapper.Map<CategoriesDal>(model);
         var sum = await _categoriesManager.CreateCategories(token, newCategory);
         return Ok(new CategoryResponse(newCategory.Name, newCategory.Id, newCategory.Type, sum, newCategory.Img));
     }
@@ -45,11 +44,7 @@ public class CategoriesController : BasePublicController
     public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryModelRequest model)
     {
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
-        var newCategory = new CategoriesDal();
-        newCategory.Name = model.Name;
-        newCategory.Img = model.Img;
-        newCategory.Type = model.Type;
-        newCategory.Id = model.CategoryId;
+        var newCategory = _mapper.Map<CategoriesDal>(model);
         await _categoriesManager.UpdateCategory(newCategory, token);
         return Ok();
     }
