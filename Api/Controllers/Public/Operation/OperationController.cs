@@ -136,14 +136,14 @@ public class OperationController : BasePublicController
         var operations = await _operationManager.GetOperationsByTypeAsync(token, model.DateTime);
         
         var responsesIncome = new List<OperationResponse>();
-        foreach (var operation in operations.Item1)
+        foreach (var operation in operations.Item1.Skip(model.Count == 0 ? 0 : operations.Item1.Count - model.Count))
         {
             responsesIncome.Add(new OperationResponse(operation.Id, operation.Price, operation.DateTime, 
                 await  _operationManager.GetNameCategory(operation.Id)));
         }
         
         var responsesExpenses = new List<OperationResponse>();
-        foreach (var operation in operations.Item2)
+        foreach (var operation in operations.Item2.Skip(model.Count == 0 ? 0 : operations.Item2.Count - model.Count))
         {
             responsesExpenses.Add(new OperationResponse(operation.Id, operation.Price, operation.DateTime, 
                 await  _operationManager.GetNameCategory(operation.Id)));
