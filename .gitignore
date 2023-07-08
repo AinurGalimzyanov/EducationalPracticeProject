@@ -1,0 +1,13 @@
+/Api/appsettings.json
+/Api/appsettings.Development.json
+/Dal/appsettings.json
+/Dal/Migrations/
+/Api/Dockerfile
+/Api/docker-compose.yml
+/Api/.gitlab-ci.yml
+/Api/bin/
+/Dal/bin/
+/Logic/bin/
+/Api/obj/
+/Dal/obj/
+/Logic/obj/

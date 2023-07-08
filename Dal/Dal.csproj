@@ -1,0 +1,356 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+      <PackageReference Include="Fligoo.Framework.Base.Api" Version="3.0.1" />
+      <PackageReference Include="IdentityServer4" Version="4.1.2" />
+      <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+      <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
+      <PackageReference Include="IdentityServer4.Storage" Version="4.1.2" />
+      <PackageReference Include="MailKit" Version="4.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.Server.IIS" Version="2.2.6" />
+      <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.2.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.2.23128.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.2" />
+      <PackageReference Include="Serilog.AspNetCore" Version="6.1.1-dev-00295" />
+      <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+      <PackageReference Include="Serilog.Enrichers.Thread" Version="3.2.0-dev-00752" />
+      <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.1-dev-10338" />
+      <PackageReference Include="Serilog.Settings.Configuration" Version="4.0.0-dev-00486" />
+      <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+      <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\ImgInProfile\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\10.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\11.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\2.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\3.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\4.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\5.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\6.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\7.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\8.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\9.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\beauty_1hugmf27jvcu1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\beauty_7mgupz57ad5p1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\beauty_87ee79mxlqbn1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\care_q692j3xm3aja1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\delivery_gjt4k4o5aze01.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\drinks_jscmmlhw7m5u1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\drinks_op64mq1jywlo1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\drugs_7k0exerv270d1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\finances_yp0qzgj9gfj11.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\finance_37s5t8r964hm1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\finance_4rv3iuw2k69o1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\finance_8dk1994wlwrd1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\food_20sivgeiht6u1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\food_x8gskkxfigt21.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\gaming_n03l2fj5gkgg1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\grooming_pvdvdwulrmj81.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group (10).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group (11).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group (12).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(13).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(2).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(3).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(4).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(5).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(6).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(8).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group(9).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Group.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\health_d25bpxh0pbbz1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\meal_27d5m1tpgrl61(40).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\medication_tmv8pcl1m59p1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\meds_ybdr7iqc1hkn1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\phone_k3q3skegukqs1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\piggy_bank_nlmw65uu4bew1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\shoe_j9q1ne596pn51.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\skincare_cb98t87lhvvi1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\skincare_lauutul4fken1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\skincare_pxmluxqz2ub91.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\skincare_wzf2epdk4lgf1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\taxi_abna3b8n597v1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\taxi_acyw5sshemhw1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\toothbrush_elezz8z1uuzu1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\tramway_psfc15ecf9vb1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\transportation_9dxb75j683wy1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\vacation_18339xq1h2j61.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Vector(14).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Vector(15).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\Vector(16).svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\PictureForCategories\vegetable_cyfx5pbc0lti1.svg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="File\PictureForCategories\drinks_jscmmlhw7m5u 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\drinks_op64mq1jywlo 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\drinks_zy32p5i5td81 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\food_2ji9b0hec6ft 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\food_20sivgeiht6u 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\food_rt0gxsxv4594 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\food_x8gskkxfigt2 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\meal_8bxbkauun39f 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\meal_27d5m1tpgrl6 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\pizza_utb6tngnb5j5 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\vegetable_cyfx5pbc0lti 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\drugs_7k0exerv270d 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\drugs_igtco1n3jys9 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\health_d25bpxh0pbbz 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\medication_tmv8pcl1m59p 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\medicines_ecqkdi487e77 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\meds_ybdr7iqc1hkn 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\clothes_vmy3tme00jtr 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\delivery_3ej5hrx3a3oz 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\delivery_gjt4k4o5aze0 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\flowers_x2v5jf46osrj 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\gaming_n03l2fj5gkgg 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\hanger_kp6ljdv63y7n 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\phone_k3q3skegukqs 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\shoe_j9q1ne596pn5 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\car_sharing_aonedq4c0x04 (1) 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\kick_scooter_h8srhhpxyqku 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\taxi_abna3b8n597v 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\taxi_acyw5sshemhw 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\tramway_psfc15ecf9vb 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\transportation_9dxb75j683wy 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\trolleybus_qgxwl1zfnjdi 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\vacation_18339xq1h2j6 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\beauty_1hugmf27jvcu 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\beauty_7mgupz57ad5p 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\beauty_87ee79mxlqbn 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\care_q692j3xm3aja 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\grooming_pvdvdwulrmj8 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\medicines_ecqkdi487e77 2.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\skincare_cb98t87lhvvi 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\skincare_lauutul4fken 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\skincare_pxmluxqz2ub9 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\skincare_wzf2epdk4lgf 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\toothbrush_elezz8z1uuzu 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\piggy_bank_nlmw65uu4bew 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\creditcard_120378 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\finance_4rv3iuw2k69o 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\finance_8dk1994wlwrd 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\finance_37s5t8r964hm 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\finances_yp0qzgj9gfj1 1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\Group.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\10.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\11.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\1.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\2.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\3.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\4.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\5.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\6.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\7.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\8.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="File\PictureForCategories\9.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
+</Project>
