@@ -9,5 +9,12 @@ public class AllOperationModelRequest
     [Required]
     [JsonProperty("DateTime")]
     public required DateTime DateTime { get; init; }
+
+    [JsonProperty("Count")]
+    [DefaultValue(0)]
+    public int Count { get; init; }
     
+    [JsonProperty("Page")]
+    [DefaultValue(0)]
+    public int Page { get; init; }
 }

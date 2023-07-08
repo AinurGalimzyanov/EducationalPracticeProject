@@ -17,4 +17,12 @@ public class OperationsByTypeDynamically
     [Required]
     [JsonProperty("Type")]
     public required string Type { get; init; }
+
+    [JsonProperty("Count")]
+    [DefaultValue(0)]
+    public int Count { get; init; }
+    
+    [JsonProperty("Page")]
+    [DefaultValue(0)]
+    public int Page { get; init; }
 }

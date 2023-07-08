@@ -68,8 +68,11 @@ public class OperationController : BasePublicController
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         if (CheckNotValidAccess(token)) return StatusCode(403);
         var operations =  await _operationManager.GetAllOperations(token, model.DateTime);
+        if (operations.Count - model.Count * model.Page < -model.Count) return BadRequest();
         var result = new List<OperationResponse>();
-        foreach (var operation in operations)
+        var skipValue = model.Count == 0 ? 0 : operations.Count - model.Count * model.Page;
+        var takeValue = model.Count == 0 ? operations.Count : (skipValue > -model.Count && skipValue < 0) ? operations.Count - model.Count * (model.Page - 1) : model.Count;
+        foreach (var operation in operations.Skip(skipValue).Take(takeValue))
         {
             result.Add(new OperationResponse(operation.Id, operation.Price, operation.DateTime, 
                 await  _operationManager.GetNameCategory(operation.Id)));
@@ -83,8 +86,11 @@ public class OperationController : BasePublicController
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         if (CheckNotValidAccess(token)) return StatusCode(403);
         var operations =  await _operationManager.GetOperationsByTypeDynamically(token, model.DateTimeFrom, model.DateTimeTo, model.Type);
+        if (operations.Count - model.Count * model.Page < -model.Count) return BadRequest();
         var result = new List<OperationResponse>();
-        foreach (var operation in operations)
+        var skipValue = model.Count == 0 ? 0 : operations.Count - model.Count * model.Page;
+        var takeValue = model.Count == 0 ? operations.Count : (skipValue > -model.Count && skipValue < 0) ? operations.Count - model.Count * (model.Page - 1) : model.Count;
+        foreach (var operation in operations.Skip(skipValue).Take(takeValue))
         {
             result.Add(new OperationResponse(operation.Id, operation.Price, operation.DateTime, 
                 await  _operationManager.GetNameCategory(operation.Id)));
