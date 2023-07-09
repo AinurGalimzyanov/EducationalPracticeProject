@@ -1,6 +1,5 @@
 ﻿
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using Api.Controllers.Public.Base;
 using Api.Controllers.Public.Categories.Dto.Request;
 using Api.Controllers.Public.Categories.Dto.Response;
@@ -8,11 +7,9 @@ using Api.Managers.Messager.Interface;
 using AutoMapper;
 using Dal.Categories.Entity;
 using Dal.Message.Entity;
-using Dal.User.Entity;
 using Logic.Managers.Categories.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers.Public.Categories;
