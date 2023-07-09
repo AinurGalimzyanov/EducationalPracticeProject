@@ -66,14 +66,17 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         }
     }
 
-    public async Task UpdateCategory(CategoriesDal dal, string token)
+    public async Task UpdateCategory(CategoriesDal dal, string oldType, string token)
     {
         var sum = await GetSumCategory(dal.Id, token);
         var user = await FindUser(token);
-        var balance = dal.Type == "income" ? 2 * sum : 2 * (-sum);
-        user.Balance += balance;
-        if(user.Balance >= 0)
-            await _userManager.UpdateAsync(user);
+        if (oldType != dal.Type)
+        {
+            var balance = dal.Type == "income" ? 2 * sum : 2 * (-sum);
+            user.Balance += balance;
+            if(user.Balance >= 0)
+                await _userManager.UpdateAsync(user);
+        }
         await UpdateAsync(dal);
     }
 
@@ -124,10 +127,11 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         user.Balance += dif;
         await _userManager.UpdateAsync(user);
         var listOperation = await _categoriesRepository.GetOperations(id);
+        var sumOperation = listOperation.Select(x => x.Price).Sum();
+        await _messagerManager.CreateMessage(token,
+            new MessageDal($"Удалена операция: {category.Name} {sumOperation} руб.", DateTime.UtcNow));
         foreach (var operation in listOperation)
         {
-            await _messagerManager.CreateMessage(token,
-                new MessageDal($"Удалена операция: {category.Name} {operation.Price} руб.", DateTime.UtcNow));
             await _operationRepository.DeleteAsync(operation.Id);
         }
         await DeleteAsync(id);

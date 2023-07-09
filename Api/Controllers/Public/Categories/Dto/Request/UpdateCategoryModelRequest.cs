@@ -21,5 +21,8 @@ namespace Api.Controllers.Public.Categories.Dto.Request
         [Required]
         [JsonProperty("Type")]
         public required string Type { get; init; }
+        
+        [JsonProperty("OldType")]
+        public string OldType { get; init; }
     }
 }

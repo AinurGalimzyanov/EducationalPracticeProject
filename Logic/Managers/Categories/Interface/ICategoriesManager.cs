@@ -19,7 +19,7 @@ public interface ICategoriesManager : IBaseManager<CategoriesDal, Guid>
 
      public Task DeleteCategory(Guid id, string token);
 
-     public Task UpdateCategory(CategoriesDal dal, string token);
+     public Task UpdateCategory(CategoriesDal dal,string oldType, string token);
 
      public Task<decimal?> GetSumCurrentMonth(Guid categoryId, string token, DateTime date);
 }
