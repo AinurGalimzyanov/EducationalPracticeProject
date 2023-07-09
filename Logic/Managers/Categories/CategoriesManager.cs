@@ -1,10 +1,13 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Api.Managers.Messager.Interface;
 using AutoMapper;
 using Dal.Base.Repositories.Interface;
 using Dal.Categories.Entity;
 using Dal.Categories.Repositories;
 using Dal.Categories.Repositories.Interface;
+using Dal.Message.Entity;
+using Dal.Message.Repositories.Interface;
 using Dal.Operation.Entity;
 using Dal.Operation.Repositories.Interface;
 using Dal.User.Entity;
@@ -20,12 +23,14 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
     private readonly ICategoriesRepository _categoriesRepository;
     private readonly IOperationRepository _operationRepository;
     private readonly ILogger<CategoriesManager> _logger;
-    public CategoriesManager(ICategoriesRepository repository, UserManager<UserDal> userManager, IOperationRepository operationRepository, ILogger<CategoriesManager> logger) : base(repository)
+    private readonly IMessagerManager _messagerManager;
+    public CategoriesManager(ICategoriesRepository repository, UserManager<UserDal> userManager, IOperationRepository operationRepository, ILogger<CategoriesManager> logger , IMessagerManager messagerManager) : base(repository)
     {
         _userManager = userManager;
         _categoriesRepository = repository;
         _operationRepository = operationRepository;
         _logger = logger;
+        _messagerManager = messagerManager;
     }
 
     private async Task<UserDal> FindUser(string token)
@@ -121,6 +126,8 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         var listOperation = await _categoriesRepository.GetOperations(id);
         foreach (var operation in listOperation)
         {
+            await _messagerManager.CreateMessage(token,
+                new MessageDal($"Удалена операция: {category.Name} {operation.Price} руб.", DateTime.UtcNow));
             await _operationRepository.DeleteAsync(operation.Id);
         }
         await DeleteAsync(id);
