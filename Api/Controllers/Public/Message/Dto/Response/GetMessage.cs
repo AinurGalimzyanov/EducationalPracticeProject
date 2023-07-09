@@ -9,8 +9,13 @@ public class GetMessage
     [JsonProperty("Message")] 
     public string Message { get; init; }
 
-    public GetMessage(string message)
+    [Required] 
+    [JsonProperty("DateTime")] 
+    public DateTime DateTime { get; init; }
+
+    public GetMessage(string message, DateTime dateTime)
     {
         Message = message;
+        DateTime = dateTime;
     }
 }

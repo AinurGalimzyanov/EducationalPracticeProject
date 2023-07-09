@@ -35,7 +35,7 @@ public class OperationController : BasePublicController
         var operation = _mapper.Map<OperationDal>(model);
         await _operationManager.CreateOperation(token,  operation, model.CategoryId);
         var categoryName = await _operationManager.GetNameCategory(operation.Id);
-        await _messagerManager.CreateMessage(token, new MessageDal($"Добавлена операция: {categoryName} {model.Price} руб."));
+        await _messagerManager.CreateMessage(token, new MessageDal($"Добавлена операция: {categoryName} {model.Price} руб.", DateTime.Now));
         return Ok(new OperationResponse(operation.Id, operation.Price, operation.DateTime, categoryName));
     }
     
@@ -47,7 +47,7 @@ public class OperationController : BasePublicController
         var operation = _mapper.Map<OperationDal>(model);
         await _operationManager.UpdateOperation(token, operation, model.OldPrice);
         var categoryName = await _operationManager.GetNameCategory(operation.Id);
-        await _messagerManager.CreateMessage(token, new MessageDal($"Изменена операция: {categoryName} с {model.OldPrice} на {model.Price} руб."));
+        await _messagerManager.CreateMessage(token, new MessageDal($"Изменена операция: {categoryName} с {model.OldPrice} на {model.Price} руб.", DateTime.Now));
         return Ok(new OperationResponse(operation.Id, operation.Price, operation.DateTime, categoryName));
     }
     
@@ -59,7 +59,7 @@ public class OperationController : BasePublicController
         var categoryName = await _operationManager.GetNameCategory(id);
         var operation = await _operationManager.GetAsync(id);
         await _operationManager.DeleteOperation(id, token);
-        await _messagerManager.CreateMessage(token, new MessageDal($"Удалена операция: {categoryName} {operation.Price} руб."));
+        await _messagerManager.CreateMessage(token, new MessageDal($"Удалена операция: {categoryName} {operation.Price} руб.", DateTime.Now));
         return Ok();
     }
     
@@ -195,7 +195,7 @@ public class OperationController : BasePublicController
         var oldBalance = await _operationManager.GetBalanceAsync(token);
         if (CheckNotValidAccess(token)) return StatusCode(403);
         await _operationManager.CreateBalanceAsync(token, model.NewBalance);
-        await _messagerManager.CreateMessage(token, new MessageDal($"Изменен баланс: c {oldBalance} на {model.NewBalance} руб."));
+        await _messagerManager.CreateMessage(token, new MessageDal($"Изменен баланс: c {oldBalance} на {model.NewBalance} руб.", DateTime.Now));
         return Ok();
     }
     

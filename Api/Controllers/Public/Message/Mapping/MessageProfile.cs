@@ -9,6 +9,8 @@ public class MessageProfile : Profile
     public MessageProfile()
     {
         CreateMap<MessageDal, GetMessage>()
-            .ForMember(dst => dst.Message, opt => opt.MapFrom(src => src.Message));
+            .ForMember(dst => dst.Message, opt => opt.MapFrom(src => src.Message))
+            .ForMember(dst => dst.DateTime, opt => opt.MapFrom(src => src.DateTime));
+
     }
 }
