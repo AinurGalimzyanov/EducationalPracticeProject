@@ -40,6 +40,7 @@ public class CategoriesController : BasePublicController
         var message = new MessageDal();
         message.Message = $"Добавлена категория: {model.Name}";
         message.DateTime = DateTime.Now;
+        await _messagerManager.CreateMessage(token, message);
         return Ok(new CategoryResponse(newCategory.Name, newCategory.Id, newCategory.Type, sum, newCategory.Img));
     }
     

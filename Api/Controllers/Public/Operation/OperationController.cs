@@ -208,7 +208,6 @@ public class OperationController : BasePublicController
         message.Message = $"Изменен баланс: c {oldBalance} на {model.NewBalance} руб.";
         message.DateTime = DateTime.Now;
         await _messagerManager.CreateMessage(token, message);
-        await _messagerManager.CreateMessage(token, message);
         return Ok();
     }
     
