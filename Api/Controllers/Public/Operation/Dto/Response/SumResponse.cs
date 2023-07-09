@@ -7,9 +7,9 @@ public class SumResponse
 {
     [Required]
     [JsonProperty("Sum")]
-    public int? Sum { get; init; }
+    public decimal? Sum { get; init; }
 
-    public SumResponse(int? sum)
+    public SumResponse(decimal? sum)
     {
         Sum = sum;
     }

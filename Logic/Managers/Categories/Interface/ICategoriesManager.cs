@@ -7,13 +7,13 @@ namespace Logic.Managers.Categories.Interface;
 
 public interface ICategoriesManager : IBaseManager<CategoriesDal, Guid>
 {
-     public Task<int?> CreateCategories(string token, CategoriesDal dal);
+     public Task<decimal?> CreateCategories(string token, CategoriesDal dal);
      
      public Task<(List<CategoriesDal>,List<CategoriesDal>)> GetAllCategoriesByType(string token);
 
-     public Task<int?> GetSumCategory(Guid categoryId, string token);
+     public Task<decimal?> GetSumCategory(Guid categoryId, string token);
 
-     public Task<int?> GetSumCategoryFromTo(string token, Guid catId, DateTime from, DateTime to, string type);
+     public Task<decimal?> GetSumCategoryFromTo(string token, Guid catId, DateTime from, DateTime to, string type);
 
      public Task AddStaticCategories(UserDal user);
 
@@ -21,5 +21,5 @@ public interface ICategoriesManager : IBaseManager<CategoriesDal, Guid>
 
      public Task UpdateCategory(CategoriesDal dal, string token);
 
-     public Task<int?> GetSumCurrentMonth(Guid categoryId, string token, DateTime date);
+     public Task<decimal?> GetSumCurrentMonth(Guid categoryId, string token, DateTime date);
 }

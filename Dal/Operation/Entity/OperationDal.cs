@@ -7,7 +7,7 @@ namespace Dal.Operation.Entity;
 
 public class OperationDal : BaseDal<Guid>
 {
-    public int? Price { get; set; }
+    public decimal? Price { get; set; }
     
     public DateTime? DateTime { get; set; }
 

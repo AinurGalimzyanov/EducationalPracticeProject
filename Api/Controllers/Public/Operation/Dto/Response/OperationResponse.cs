@@ -11,7 +11,7 @@ public class OperationResponse
     
     [Required]
     [JsonProperty("Price")]
-    public int? Price { get; init; }
+    public decimal? Price { get; init; }
     
     [Required]
     [JsonProperty("DateTime")]
@@ -21,7 +21,7 @@ public class OperationResponse
     [JsonProperty("NameCategory")]
     public string? NameCategory { get; init; }
 
-    public OperationResponse(Guid id, int? price, DateTime? dateTime, string? nameCategory)
+    public OperationResponse(Guid id, decimal? price, DateTime? dateTime, string? nameCategory)
     {
         Id = id;
         Price = price;

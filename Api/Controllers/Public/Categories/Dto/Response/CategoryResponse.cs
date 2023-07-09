@@ -24,12 +24,12 @@ public class CategoryResponse
     
     [Required]
     [JsonProperty("Sum")] 
-    public int? Sum { get; init; } = 0;
+    public decimal? Sum { get; init; } = 0;
     
     [JsonProperty("ListOperation")]
     public List<OperationResponse> ListOperation { get; set; }
 
-    public CategoryResponse(string name, Guid id, string type, int? sum, string? img = null)
+    public CategoryResponse(string name, Guid id, string type, decimal? sum, string? img = null)
     {
         Name = name;
         Id = id;

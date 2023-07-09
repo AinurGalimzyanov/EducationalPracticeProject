@@ -72,14 +72,14 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         await UpdateAsync(dal);
     }
 
-    public async Task<int?> GetSumCurrentMonth(Guid categoryId, string token, DateTime date)
+    public async Task<decimal?> GetSumCurrentMonth(Guid categoryId, string token, DateTime date)
     {
         var user = await FindUser(token);
         var sum = await _categoriesRepository.GetSumCurrentMonth(categoryId, user.Id, date);
         return sum;
     }
 
-    public async Task<int?> CreateCategories(string token, CategoriesDal dal)
+    public async Task<decimal?> CreateCategories(string token, CategoriesDal dal)
     {
         var user = await FindUser(token);
         var sum = await _categoriesRepository.GetSumCategory(dal.Id, user.Id);
@@ -97,14 +97,14 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         return new(listIncome, listExpenses);
     }
 
-    public async Task<int?> GetSumCategory(Guid categoryId, string token)
+    public async Task<decimal?> GetSumCategory(Guid categoryId, string token)
     {
         var user = await FindUser(token);
         var sum = await _categoriesRepository.GetSumCategory(categoryId, user.Id);
         return sum;
     }
 
-    public async Task<int?> GetSumCategoryFromTo(string token, Guid catId, DateTime from, DateTime to, string type)
+    public async Task<decimal?> GetSumCategoryFromTo(string token, Guid catId, DateTime from, DateTime to, string type)
     {
         var user = await FindUser(token);
         return await _categoriesRepository.GetSumCategoryFromTo(user.Id, catId, from, to, type);

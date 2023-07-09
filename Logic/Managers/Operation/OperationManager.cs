@@ -60,7 +60,7 @@ public class OperationManager : BaseManager<OperationDal, Guid>, IOperationManag
         }
     }
 
-    private async Task<bool> SetBalanceAfterNewOperation(UserDal user, int? currentPrice)
+    private async Task<bool> SetBalanceAfterNewOperation(UserDal user, decimal? currentPrice)
     {
         var balance = await GetBalanceAsync(user.RefreshToken);
         var newBalance = balance + currentPrice;
@@ -97,14 +97,14 @@ public class OperationManager : BaseManager<OperationDal, Guid>, IOperationManag
         return operations;
     }
 
-    public async Task<int?> GetBalanceAsync(string token)
+    public async Task<decimal?> GetBalanceAsync(string token)
     {
         var user = await FindUser(token);
         return user.Balance;
     }
 
 
-    public async Task CreateBalanceAsync(string token, int newBalance)
+    public async Task CreateBalanceAsync(string token, decimal newBalance)
     {
         var user = await FindUser(token);
         user.Balance = newBalance;
@@ -123,7 +123,7 @@ public class OperationManager : BaseManager<OperationDal, Guid>, IOperationManag
         await DeleteAsync(operationId);
     }
 
-    public async Task UpdateOperation(string token, OperationDal operation, int oldPrice)
+    public async Task UpdateOperation(string token, OperationDal operation, decimal oldPrice)
     {
         var user = await FindUser(token);
         await UpdateAsync(operation);
@@ -149,7 +149,7 @@ public class OperationManager : BaseManager<OperationDal, Guid>, IOperationManag
         return operation;
     }
 
-    public async Task<int?> GetSumByCategoryAsync(string token, Guid categoryId, DateTime dateTime)
+    public async Task<decimal?> GetSumByCategoryAsync(string token, Guid categoryId, DateTime dateTime)
     {
         var user = await FindUser(token);
         var operations =
@@ -158,7 +158,7 @@ public class OperationManager : BaseManager<OperationDal, Guid>, IOperationManag
         return sum;
     }
     
-    public async Task<int?> GetSumByTypeAsync(string token, string type, DateTime dateTime)
+    public async Task<decimal?> GetSumByTypeAsync(string token, string type, DateTime dateTime)
     {
         var user = await FindUser(token);
         var operations = await _operationRepository.GetAllOperationByTypeAsync(user.Id, type, dateTime);

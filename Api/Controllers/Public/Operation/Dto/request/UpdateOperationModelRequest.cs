@@ -11,7 +11,7 @@ public class UpdateOperationModelRequest
 
     [Required]
     [JsonProperty("Price")]
-    public required int Price { get; init; }
+    public required decimal Price { get; init; }
     
     [Required]
     [JsonProperty("DateTime")]
@@ -19,5 +19,5 @@ public class UpdateOperationModelRequest
     
     [Required]
     [JsonProperty("OldPrice")]
-    public required int OldPrice { get; init; }
+    public required decimal OldPrice { get; init; }
 }

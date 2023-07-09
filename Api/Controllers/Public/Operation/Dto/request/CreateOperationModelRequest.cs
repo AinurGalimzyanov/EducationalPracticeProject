@@ -7,7 +7,7 @@ public class CreateOperationModelRequest
 {
     [Required]
     [JsonProperty("Price")]
-    public required int Price { get; init; }
+    public required decimal Price { get; init; }
     
     [Required]
     [JsonProperty("DateTime")]

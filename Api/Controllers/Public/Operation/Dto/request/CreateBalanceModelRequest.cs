@@ -7,5 +7,5 @@ public class CreateBalanceModelRequest
 {
     [Required]
     [JsonProperty("NewBalance")]
-    public required int NewBalance { get; init; }
+    public required decimal NewBalance { get; init; }
 }

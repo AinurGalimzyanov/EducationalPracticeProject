@@ -14,19 +14,19 @@ public interface IOperationManager : IBaseManager<OperationDal, Guid>
 
     public Task<List<OperationDal>> GetOperationsByCategoryAsync(string token, Guid categoryId, DateTime dateTime);
 
-    public Task<int?> GetBalanceAsync(string token);
+    public Task<decimal?> GetBalanceAsync(string token);
 
-    public Task CreateBalanceAsync(string token, int newBalance);
+    public Task CreateBalanceAsync(string token, decimal newBalance);
 
     public Task DeleteOperation(Guid operationId, string token);
 
-    public Task UpdateOperation(string token, OperationDal operation, int oldPrice);
+    public Task UpdateOperation(string token, OperationDal operation, decimal oldPrice);
 
     public Task<OperationDal> GetOperation(Guid id);
 
-    public Task<int?> GetSumByCategoryAsync(string token, Guid categoryId, DateTime dateTime);
+    public Task<decimal?> GetSumByCategoryAsync(string token, Guid categoryId, DateTime dateTime);
 
-    public Task<int?> GetSumByTypeAsync(string token, string type, DateTime dateTime);
+    public Task<decimal?> GetSumByTypeAsync(string token, string type, DateTime dateTime);
 
     public Task<string> GetNameCategory(Guid operationId);
 

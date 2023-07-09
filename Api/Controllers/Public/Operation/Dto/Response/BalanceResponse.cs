@@ -7,9 +7,9 @@ public class BalanceResponse
 {
     [Required]
     [JsonProperty("Balance")]
-    public int? Balance { get; init; }
+    public decimal? Balance { get; init; }
 
-    public BalanceResponse(int? balance)
+    public BalanceResponse(decimal? balance)
     {
         Balance = balance;
     }

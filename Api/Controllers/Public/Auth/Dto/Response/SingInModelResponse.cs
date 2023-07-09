@@ -20,13 +20,13 @@ public class SingInModelResponse
     
     [Required]
     [JsonProperty("Balance")]
-    public int? Balance { get; init; }
+    public decimal? Balance { get; init; }
     
     [Required] 
     [JsonProperty("Img")] 
     public string? Img { get; init; }
 
-    public SingInModelResponse(string accessToken, string name, string email, int? balance, string? img)
+    public SingInModelResponse(string accessToken, string name, string email, decimal? balance, string? img)
     {
         AccessToken = accessToken;
         Name = name;

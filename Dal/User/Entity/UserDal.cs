@@ -9,7 +9,7 @@ namespace Dal.User.Entity;
 
 public class UserDal : IdentityUser
 {
-    public int? Balance { get; set; } = 0;
+    public decimal? Balance { get; set; } = 0;
     
     [MaxLength(255)]
     public string Name { get; set; }
