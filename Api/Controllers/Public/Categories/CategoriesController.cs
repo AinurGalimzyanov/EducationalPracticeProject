@@ -37,10 +37,7 @@ public class CategoriesController : BasePublicController
         if (CheckNotValidAccess(token)) return StatusCode(403);
         var newCategory = _mapper.Map<CategoriesDal>(model);
         var sum = await _categoriesManager.CreateCategories(token, newCategory);
-        var message = new MessageDal();
-        message.Message = $"Добавлена категория: {model.Name}";
-        message.DateTime = DateTime.Now;
-        await _messagerManager.CreateMessage(token, message);
+        await _messagerManager.CreateMessage(token, new MessageDal($"Добавлена категория: {model.Name}", DateTime.UtcNow));
         return Ok(new CategoryResponse(newCategory.Name, newCategory.Id, newCategory.Type, sum, newCategory.Img));
     }
     
@@ -51,10 +48,7 @@ public class CategoriesController : BasePublicController
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         var newCategory = _mapper.Map<CategoriesDal>(model);
         await _categoriesManager.UpdateCategory(newCategory, token);
-        var message = new MessageDal();
-        message.Message = $"Отредактирована категория: {model.Name}";
-        message.DateTime = DateTime.Now;
-        await _messagerManager.CreateMessage(token, message);
+        await _messagerManager.CreateMessage(token, new MessageDal( $"Отредактирована категория: {model.Name}", DateTime.UtcNow));
         return Ok();
     }
     
@@ -65,10 +59,7 @@ public class CategoriesController : BasePublicController
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         var category = await _categoriesManager.GetAsync(id);
         await _categoriesManager.DeleteCategory(id, token);
-        var message = new MessageDal();
-        message.Message = $"Удалена категория: {category.Name}";
-        message.DateTime = DateTime.Now;
-        await _messagerManager.CreateMessage(token, message);
+        await _messagerManager.CreateMessage(token, new MessageDal($"Удалена категория: {category.Name}", DateTime.UtcNow));
         return Ok();
     }
 
