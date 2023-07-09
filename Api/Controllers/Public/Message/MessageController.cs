@@ -26,7 +26,7 @@ public class MessageController : BasePublicController
     }
 
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    [HttpPost("getMessages")]
+    [HttpGet("getMessages")]
     public async Task<IActionResult> CreateCategory([FromQuery] MessageRequest model)
     {
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
