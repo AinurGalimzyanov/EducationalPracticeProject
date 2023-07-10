@@ -74,8 +74,14 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         {
             var balance = dal.Type == "income" ? 2 * sum : 2 * (-sum);
             user.Balance += balance;
-            if(user.Balance >= 0)
+            if (user.Balance >= 0)
+            {
                 await _userManager.UpdateAsync(user);
+            }
+            else
+            {
+                throw new AggregateException("Сумма уйдет в отрицательное значение.");
+            }
         }
         await UpdateAsync(dal);
     }

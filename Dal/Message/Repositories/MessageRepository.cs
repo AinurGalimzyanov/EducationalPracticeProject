@@ -15,13 +15,13 @@ public class MessageRepository : BaseRepository<MessageDal, Guid>, IMessageRepos
     {
         _context = context;
     }
-
-
+    
     public async Task<List<MessageDal>> GetMessagesAsync(string userId)
     {
         return await _context
             .Set<MessageDal>()
             .Where(x => x.UserDal.Id == userId)
+            .OrderBy(x => x.DateTime)
             .ToListAsync();
     }
 }

@@ -47,8 +47,15 @@ public class CategoriesController : BasePublicController
     {
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         var newCategory = _mapper.Map<CategoriesDal>(model);
-        await _categoriesManager.UpdateCategory(newCategory, model.OldType, token);
-        await _messagerManager.CreateMessage(token, new MessageDal( $"Отредактирована категория: {model.Name}", DateTime.UtcNow));
+        try
+        {
+            await _categoriesManager.UpdateCategory(newCategory, model.OldType, token);
+            await _messagerManager.CreateMessage(token, new MessageDal( $"Отредактирована категория: {model.Name}", DateTime.UtcNow));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
         return Ok();
     }
     
