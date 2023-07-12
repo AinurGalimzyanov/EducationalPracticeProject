@@ -21,7 +21,7 @@ public class MessageRepository : BaseRepository<MessageDal, Guid>, IMessageRepos
         return await _context
             .Set<MessageDal>()
             .Where(x => x.UserDal.Id == userId)
-            .OrderBy(x => x.DateTime)
+            .OrderByDescending(x => x.DateTime)
             .ToListAsync();
     }
 }
