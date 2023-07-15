@@ -6,6 +6,7 @@ using Api.Managers.Messager.Interface;
 using AutoMapper;
 using Dal.Message.Entity;
 using Dal.Operation.Entity;
+using Logic.Managers.Categories.Interface;
 using Logic.Managers.Operation.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -18,13 +19,15 @@ public class OperationController : BasePublicController
 {
     private readonly IOperationManager _operationManager;
     private readonly IMessagerManager _messagerManager;
+    private readonly ICategoriesManager _categoriesManager;
     private readonly IMapper _mapper;
 
-    public OperationController(IOperationManager operationManager, IMessagerManager messagerManager, IMapper mapper)
+    public OperationController(IOperationManager operationManager,ICategoriesManager categoriesManager, IMessagerManager messagerManager, IMapper mapper)
     {
         _operationManager = operationManager;
         _mapper = mapper;
         _messagerManager = messagerManager;
+        _categoriesManager = categoriesManager;
     }
 
     [HttpPost("create")]
@@ -35,7 +38,9 @@ public class OperationController : BasePublicController
         var operation = _mapper.Map<OperationDal>(model);
         await _operationManager.CreateOperation(token,  operation, model.CategoryId);
         var categoryName = await _operationManager.GetNameCategory(operation.Id);
-        await _messagerManager.CreateMessage(token, new MessageDal($"Добавлена операция: {categoryName} {model.Price} руб.", DateTime.UtcNow));
+        var category = await _categoriesManager.GetAsync(model.CategoryId);
+        var nameType = category.Type == "income" ? "доход" : "расход";
+        await _messagerManager.CreateMessage(token, new MessageDal($"Добавлена операция {nameType}: {categoryName} {model.Price} руб.", DateTime.UtcNow));
         return Ok(new OperationResponse(operation.Id, operation.Price, operation.DateTime, categoryName));
     }
     

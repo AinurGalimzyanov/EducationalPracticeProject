@@ -1,4 +1,20 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Users\79373\.nuget\packages\automapper.extensions.microsoft.dependencyinjection\12.0.0\lib\netstandard2.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll" /&gt;&#xD;
-&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\79373\AppData\Local\JetBrains\Rider2023.1\resharper-host\temp\Rider\vAny\CoverageData\_FinancialAnalysis.-1729176417\Snapshot\snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2744ea30_002D9dac_002D4a79_002Daa38_002Df5d6bef69365/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserManager_UpdateUser #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::5A78E457-36FC-4ECB-A89E-001BA67D2AAF::net7.0::Tests.BasicTests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=937773c1_002Dc382_002D4793_002D967b_002D625426dd83d4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserManager_UpdateUser" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::5A78E457-36FC-4ECB-A89E-001BA67D2AAF::net7.0::Tests.BasicTests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b0d77c09_002Dc17a_002D4106_002Db22e_002Df1e2f32795d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UserManager_UpdateUser #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::5A78E457-36FC-4ECB-A89E-001BA67D2AAF::net7.0::Tests.BasicTests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

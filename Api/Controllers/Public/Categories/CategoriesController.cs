@@ -37,7 +37,8 @@ public class CategoriesController : BasePublicController
         if (CheckNotValidAccess(token)) return StatusCode(403);
         var newCategory = _mapper.Map<CategoriesDal>(model);
         var sum = await _categoriesManager.CreateCategories(token, newCategory);
-        await _messagerManager.CreateMessage(token, new MessageDal($"Добавлена категория: {model.Name}", DateTime.UtcNow));
+        var nameType = model.Type == "income" ? "доход" : "расход";
+        await _messagerManager.CreateMessage(token, new MessageDal($"Добавлена категория {nameType}: {model.Name}", DateTime.UtcNow));
         return Ok(new CategoryResponse(newCategory.Name, newCategory.Id, newCategory.Type, sum, newCategory.Img));
     }
     
@@ -50,7 +51,8 @@ public class CategoriesController : BasePublicController
         try
         {
             await _categoriesManager.UpdateCategory(newCategory, model.OldType, token);
-            await _messagerManager.CreateMessage(token, new MessageDal( $"Отредактирована категория: {model.Name}", DateTime.UtcNow));
+            var nameType = model.Type == "income" ? "доход" : "расход";
+            await _messagerManager.CreateMessage(token, new MessageDal( $"Отредактирована категория {nameType}: {model.Name}", DateTime.UtcNow));
         }
         catch (Exception e)
         {
@@ -66,7 +68,8 @@ public class CategoriesController : BasePublicController
         var token = HttpContext.Request.Headers["Authorization"].ToString().Split(' ')[1];
         var category = await _categoriesManager.GetAsync(id);
         await _categoriesManager.DeleteCategory(id, token);
-        await _messagerManager.CreateMessage(token, new MessageDal($"Удалена категория: {category.Name}", DateTime.UtcNow));
+        var nameType = category.Type == "income" ? "доход" : "расход";
+        await _messagerManager.CreateMessage(token, new MessageDal($"Удалена категория {nameType}: {category.Name}", DateTime.UtcNow));
         return Ok();
     }
 
