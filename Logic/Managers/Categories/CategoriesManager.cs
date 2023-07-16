@@ -133,9 +133,12 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         user.Balance += dif;
         await _userManager.UpdateAsync(user);
         var listOperation = await _categoriesRepository.GetOperations(id);
-        var sumOperation = listOperation.Select(x => x.Price).Sum();
-        await _messagerManager.CreateMessage(token,
-            new MessageDal($"Удалено операций: {listOperation.Count} на сумму {sumOperation} руб.", DateTime.UtcNow));
+        if (listOperation.Count != 0)
+        {
+            var sumOperation = listOperation.Select(x => x.Price).Sum();
+            await _messagerManager.CreateMessage(token,
+                new MessageDal($"Удалено операций: {listOperation.Count} на сумму {sumOperation} руб.", DateTime.UtcNow));
+        }
         foreach (var operation in listOperation)
         {
             await _operationRepository.DeleteAsync(operation.Id);

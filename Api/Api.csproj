@@ -20,6 +20,7 @@
       <PackageReference Include="Microsoft.AspNetCore.Server.IIS" Version="2.2.6" />
       <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.2.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.2.23128.3" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.2" />
       <PackageReference Include="Serilog.AspNetCore" Version="6.1.1-dev-00295" />
       <PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0-dev-00792" />

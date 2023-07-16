@@ -13,8 +13,22 @@
     &lt;TestId&gt;xUnit::5A78E457-36FC-4ECB-A89E-001BA67D2AAF::net7.0::Tests.BasicTests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b0d77c09_002Dc17a_002D4106_002Db22e_002Df1e2f32795d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UserManager_UpdateUser #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ac865815_002D54a1_002D4246_002D89ae_002D4a80721b6565/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UserManager_UpdateUser #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::5A78E457-36FC-4ECB-A89E-001BA67D2AAF::net7.0::Tests.BasicTests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABB0290D-14C9-45C7-A531-E18178984147::net7.0::Tests.Tests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b0d77c09_002Dc17a_002D4106_002Db22e_002Df1e2f32795d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserManager_UpdateUser #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::5D5FF84B-DDAB-4404-92A1-D5D71A14C1FC::net7.0::Api.Test.BasicTests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABB0290D-14C9-45C7-A531-E18178984147::net7.0::Tests.Tests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABB0290D-14C9-45C7-A531-E18178984147::net7.0::Tests.Tests(Microsoft.AspNetCore.Identity.UserManager`1[Dal.User.Entity.UserDal]).UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFD6EE61-05F8-4665-A2C6-F2EF741FBB83::net7.0::Test.Tests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9aa7abc_002D23bf_002D4eb6_002Da25f_002D236c861b81ed/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserManager_UpdateUser #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABB0290D-14C9-45C7-A531-E18178984147::net7.0::Tests.Tests.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::5D5FF84B-DDAB-4404-92A1-D5D71A14C1FC::net7.0::Api.Test.Test.UserManager_UpdateUser&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
