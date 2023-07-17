@@ -195,7 +195,7 @@ public class AuthorizeController : BasePublicController
             user.Name = model.Name != null ? model.Name : user.Name;
             user.Email = model.Email != null ? model.Email : user.Email;
             user.UserName = model.Email != null ? model.Email : user.Email;
-            user.PathToImg = model.Img;
+            user.PathToImg = model.Img != null ? model.Img : user.PathToImg;
             if (model.Password != null)
             {
                 await _userManager.RemovePasswordAsync(user);
