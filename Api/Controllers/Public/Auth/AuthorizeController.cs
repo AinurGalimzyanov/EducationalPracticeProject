@@ -197,13 +197,13 @@ public class AuthorizeController : BasePublicController
             user.UserName = model.Email != null ? model.Email : user.Email;
             if (model.Img == null)
             {
-                if (user.PathToImg == null)
-                {
-                    user.PathToImg = model.Img;
-                }
-                else if(model.Email != null || model.Name != null)
+                if (model.Email != null || model.Name != null)
                 {
                     user.PathToImg = user.PathToImg;
+                }
+                else if(user.PathToImg == null)
+                {
+                    user.PathToImg = model.Img;
                 }
                 else
                 {
@@ -218,7 +218,6 @@ public class AuthorizeController : BasePublicController
                 user.PathToImg = model.Img;
             }
             
-            user.PathToImg = model.Img;
             if (model.Password != null)
             {
                 await _userManager.RemovePasswordAsync(user);
