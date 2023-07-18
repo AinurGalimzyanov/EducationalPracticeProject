@@ -195,7 +195,26 @@ public class AuthorizeController : BasePublicController
             user.Name = model.Name != null ? model.Name : user.Name;
             user.Email = model.Email != null ? model.Email : user.Email;
             user.UserName = model.Email != null ? model.Email : user.Email;
-            user.PathToImg = model.Img != null ? model.Img : user.PathToImg;
+            if (model.Img == null)
+            {
+                if (user.PathToImg == null)
+                {
+                    user.PathToImg = model.Img;
+                }
+                else
+                {
+                    var pathToImg = user.PathToImg.Split("/").LastOrDefault();
+                    string path = "wwwroot/_content/Dal/ImgInProfile/" + pathToImg;
+                    System.IO.File.Delete(path);
+                    user.PathToImg = null;
+                }
+            }
+            else
+            {
+                user.PathToImg = model.Img;
+            }
+            
+            user.PathToImg = model.Img;
             if (model.Password != null)
             {
                 await _userManager.RemovePasswordAsync(user);
