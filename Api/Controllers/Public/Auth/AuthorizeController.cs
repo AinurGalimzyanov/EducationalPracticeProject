@@ -197,7 +197,7 @@ public class AuthorizeController : BasePublicController
             user.UserName = model.Email != null ? model.Email : user.Email;
             if (model.Img == null)
             {
-                if (model.Email != null || model.Name != null)
+                if (model.Email != null || model.Name != null || model.Password != null)
                 {
                     user.PathToImg = user.PathToImg;
                 }
