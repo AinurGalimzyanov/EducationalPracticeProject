@@ -201,6 +201,10 @@ public class AuthorizeController : BasePublicController
                 {
                     user.PathToImg = model.Img;
                 }
+                else if(model.Email != null || model.Name != null)
+                {
+                    user.PathToImg = user.PathToImg;
+                }
                 else
                 {
                     var pathToImg = user.PathToImg.Split("/").LastOrDefault();
