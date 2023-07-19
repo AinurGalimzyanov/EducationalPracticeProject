@@ -74,8 +74,9 @@ public class CategoriesManager : BaseManager<CategoriesDal, Guid>, ICategoriesMa
         {
             var balance = dal.Type == "income" ? 2 * sum : 2 * (-sum);
             balance = decimal.Round((decimal)balance, 2);
+            var currentB = user.Balance + balance;
             user.Balance += balance;
-            if (user.Balance >= 0 && user.Balance.ToString().Length <= 15)
+            if (user.Balance >= 0 && currentB.ToString().Length <= 15)
             {
                 await _userManager.UpdateAsync(user);
             }
